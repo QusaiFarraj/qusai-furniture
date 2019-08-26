@@ -19,12 +19,12 @@ class OptionController extends Controller
 
     public function create(OptionRequest $request)
     {
-        return response()->json(Option::query()->create($request->all()));
+        return response()->json(Option::query()->create($request->validated()));
     }
 
     public function update(OptionRequest $request, Option $option)
     {
-        return response()->json($option->update($request->all()));
+        return response()->json($option->update($request->validated()));
     }
 
     public function delete(Option $option)

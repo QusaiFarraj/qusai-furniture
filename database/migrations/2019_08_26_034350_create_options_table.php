@@ -18,7 +18,7 @@ class CreateOptionsTable extends Migration
             $table->timestamps();
             $table->softDeletes();
             $table->string('name')->nullable();
-            $table->string('slug')->nullable();
+            $table->string('slug')->nullable()->unique();
             $table->string('display_name')->nullable();
             $table->boolean('kid_pet_friendly')->default(false);
             $table->text('description')->nullable();

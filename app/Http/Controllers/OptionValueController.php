@@ -14,7 +14,7 @@ class OptionValueController extends Controller
 
     public function create(OptionValueRequest $request)
     {
-        return response()->json(OptionValue::query()->create($request->all()));
+        return response()->json(OptionValue::query()->create($request->validated()));
     }
 
     public function get(OptionValue $optionValue)
@@ -24,7 +24,7 @@ class OptionValueController extends Controller
 
     public function update(OptionValueRequest $request, OptionValue $optionValue)
     {
-        return response()->json($optionValue->update($request->all()));
+        return response()->json($optionValue->update($request->validated()));
     }
 
     public function delete(OptionValue $optionValue)

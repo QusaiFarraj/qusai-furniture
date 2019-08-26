@@ -19,12 +19,12 @@ class ProductController extends Controller
 
     public function create(ProductRequest $request)
     {
-        return response()->json(Product::query()->create($request->all()));
+        return response()->json(Product::query()->create($request->validated()));
     }
 
     public function update(ProductRequest $request, Product $product)
     {
-        return response()->json($product->update($request->all()));
+        return response()->json($product->update($request->validated()));
     }
 
     public function delete(Product $product)

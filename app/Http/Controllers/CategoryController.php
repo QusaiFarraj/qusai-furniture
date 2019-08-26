@@ -19,12 +19,12 @@ class CategoryController extends Controller
 
     public function create(CategoryRequest $request)
     {
-        return response()->json(Category::query()->create($request->all()));
+        return response()->json(Category::query()->create($request->validated()));
     }
 
     public function update(CategoryRequest $request, Category $category)
     {
-        return response()->json($category->update($request->all()));
+        return response()->json($category->update($request->validated()));
     }
 
     public function delete(Category $category)
