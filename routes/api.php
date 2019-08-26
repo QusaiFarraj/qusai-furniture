@@ -38,12 +38,12 @@ Route::group(['middleware' => 'api'], function (){
 
             // option values
             Route::group(['prefix' => 'optionvalue', 'name' => 'optionvalue.'], function (){
-                Route::get('/{product}/{option}/all', 'OptionValuesController@list')->name('list');
-                Route::get('/{product}/{option}/get/{optionvalue}', 'OptionValuesController@get')->name('get');
+                Route::get('/{product}/{option}/all', 'OptionValueController@list')->name('list');
+                Route::get('/{product}/{option}/get/{optionvalue}', 'OptionValueController@get')->name('get');
 
-                Route::post('/{product}/{option}/create', 'OptionValuesController@create')->name('create');
-                Route::post('/{product}/{option}/update/{optionvalue}', 'OptionValuesController@update')->name('update');
-                Route::post('/{product}/{option}/delete/{optionvalue}', 'OptionValuesController@delete')->name('delete');
+                Route::post('/{product}/{option}/create', 'OptionValueController@create')->name('create');
+                Route::post('/{product}/{option}/update/{optionvalue}', 'OptionValueController@update')->name('update');
+                Route::post('/{product}/{option}/delete/{optionvalue}', 'OptionValueController@delete')->name('delete');
             });
         });
     });
