@@ -2,84 +2,33 @@
 
 namespace App\Http\Controllers;
 
-use App\option;
-use Illuminate\Http\Request;
+use App\Http\Requests\OptionRequest;
+use App\Option;
 
 class OptionController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    public function list()
     {
-        //
+        return response()->json(Option::with('values')->get());
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function get(Option $option)
     {
-        //
+        return response()->json($option);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function create(OptionRequest $request)
     {
-        //
+        return response()->json(Option::query()->create($request->all()));
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\option  $option
-     * @return \Illuminate\Http\Response
-     */
-    public function show(option $option)
+    public function update(OptionRequest $request, Option $option)
     {
-        //
+        return response()->json($option->update($request->all()));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\option  $option
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(option $option)
+    public function delete(Option $option)
     {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\option  $option
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, option $option)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\option  $option
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(option $option)
-    {
-        //
+        return response()->json($option->delete());
     }
 }

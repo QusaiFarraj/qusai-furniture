@@ -16,6 +16,16 @@ class CreateOptionsTable extends Migration
         Schema::create('options', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->timestamps();
+            $table->softDeletes();
+            $table->string('name')->nullable();
+            $table->string('slug')->nullable();
+            $table->string('display_name')->nullable();
+            $table->boolean('kid_pet_friendly')->default(false);
+            $table->text('description')->nullable();
+            $table->unsignedBigInteger('product_id');
+
+            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
+
         });
     }
 
